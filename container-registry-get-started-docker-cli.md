@@ -18,10 +18,9 @@
    ms.date="10/07/2016"
    ms.author="stevelas"/>
 
-# Get started working with images in an Azure container registry
-
-
 >[AZURE.NOTE]Container Registry is currently in preview.
+
+# Get started working with images in an Azure container registry
 
 The Azure Container Registry is a private instance of the public [Docker Hub](http://hub.docker.com). The Azure Container Registry integrates with Docker CLI for login, push and pull operations. 
 
@@ -38,3 +37,20 @@ The follow example will download an NGINX image from Docker Hub, tag it for your
 * `docker rmi myregistry.azurecr.io/samples/nginx` will remove the image
 * `docker pull myregistry.azurecr.io/samples/nginx` will pull the image from your private registry  
 * `docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx` will start the NGINX container which was sourced from your private registry 
+
+
+
+
+
+
+## Next Steps
+Start deploying images to the [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/)
+ 
+
+## Additional Docs
+
+* [Create a new Azure Container Registry using the Azure Portal ](./container-registry-get-started-portal.md)
+* [Logging into the Azure Container Registry](container-registry-authentication.md) 
+* [Install Azure Container Registry CLI ](./container-registry-get-started-azure-cli-install.md)
+* [Create a new Azure Container Registry using the az CLI](./container-registry-get-started-docker-cli.md)
+* [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)

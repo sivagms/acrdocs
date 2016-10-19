@@ -61,14 +61,6 @@ docker run -it tryacr.azurecr.io/cli
 ```
 
 To avoid having to login each time, it's recommended to stop and restart the container. Killing, removing the container and issuing a new docker run will require re-authenticating.
-Find the container id with `docker ps -a`, start the container, then attach to the running container, hitting [enter] to get a # prompt.
-
-```
-docker ps -a
-docker start [container id]
-docker attach [container id]
-[enter]
-```
 
 ## Configuring the az CLI
 To get started, there are a few configurations you'll likely want to make.
@@ -76,7 +68,7 @@ To get started, there are a few configurations you'll likely want to make.
 ```
 az configure
 ```
-
+   
 Follow the prompts to configure the output format, data collection and choose the azure environment (public azure, us-gov, china-cloud, azure-stack)
 
 ## Logging into Azure
@@ -102,6 +94,42 @@ If the default is not the subscription you wish to work with, change the default
 ```
 az account set --name "[subscription name]"
 ```
+
+You may see duplicate subscription names, making it difficult to set the default subscription.
+
+   
+```
+  IsDefault  EnvironmentName    TenantId                              State    Name
+-----------  -----------------  ------------------------------------  -------  ------------------------------------
+  1          AzureCloud         aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  Enabled  Microsoft Azure Internal Consumption
+             AzureCloud         aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  Enabled  Microsoft Azure Internal Consumption
+             AzureCloud         aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  Enabled  Visual Studio - Data Catalog
+             AzureCloud         aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  Enabled  CBA Azure Subscription
+```
+
+Using the Azure Portal, select the subscritpions blade and copy the subscription id you wish to make the default and pass it to the `az account` CLI. 
+
+```
+az account set --name "[subscription id]"
+az account set --name "f8888888-6666-5555-4444-333333333333"
+```
+
 ## End the Session
 Hit [CTRL] + [D] to disconnect the session. This will end the session, however the image is still available to restart with the same credentials and configurations, just as if the CLI was installed directly on your machine. 
+Find the container id with `docker ps -a`, start the container, then attach to the running container, hitting [enter] to get a # prompt.
 
+```
+docker ps -a
+docker start [container id]
+docker attach [container id]
+[enter]
+```
+
+## Next steps
+
+* [Request Access to the ACR Private Preview](./container-registry-get-access.md)
+* [Create a new Azure Container Registry using the Azure Portal ](./container-registry-get-started-portal.md)
+* [Logging into the Azure Container Registry](container-registry-authentication.md) 
+* [Install Azure Container Registry CLI ](./container-registry-get-started-azure-cli-install.md)
+* [Create a new Azure Container Registry using the az CLI](./container-registry-get-started-azure-cli.md)
+* [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)
