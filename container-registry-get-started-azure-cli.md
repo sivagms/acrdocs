@@ -33,7 +33,7 @@ For background and concepts, see [What is Azure Container Registry?](container-r
 
 * **Container Registry Private Preview** - See the [instructions](container-registry-get-access.md) to register your Azure subscription and request access.
 
-* **Azure CLI 2.0 Preview** - To install and get started with the Container Registry CLI commands, see the [installation instructions](container-registry-get-started-azure-cli-install.md). *For Private Preview, the **az acr** commands are only available by using a Docker image.*
+* **Azure CLI 2.0 Preview** - To install and get started with the Container Registry CLI commands, see the [installation instructions](container-registry-get-started-azure-cli-install.md). *For Private Preview, the az acr commands are only available by using a Docker image.*
 
 * **Resource group** - Create a new resource group before creating a container registry, or use an existing resource group. Make sure the resource group is in a location where the Container Registry service is available. *For Private Preview, the service is available in the South Central US region.* To create a resource group using the CLI 2.0 Preview, see [the CLI 2.0 Preview samples](https://github.com/Azure/azure-cli-samples/tree/master/arm). 
 
