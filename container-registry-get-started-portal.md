@@ -41,6 +41,6 @@ While the Container Registry is in preview, you'll need to add a query parameter
 * [Create a new Azure Container Registry using the Azure Portal ](./container-registry-get-started-portal.md)
 * [Logging into the Azure Container Registry](container-registry-authentication.md) 
 * [Install Azure Container Registry CLI ](./container-registry-get-started-azure-cli-install.md)
-* [Create a new Azure Container Registry using the az CLI](./container-registry-get-started-docker-cli.md)
+* [Create a new Azure Container Registry using the az CLI](./container-registry-get-started-azure-cli.md)
 * [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)
  
