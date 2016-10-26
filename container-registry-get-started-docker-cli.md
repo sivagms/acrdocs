@@ -1,6 +1,6 @@
 <properties
    pageTitle="Work with images in a container registry | Microsoft Azure"
-   description="Get started using the Docker CLI to push and pull images to/from an Azure container registry..."
+   description="Push and pull Docker images to an Azure container registry using the Docker CLI"
    services="container-registry"
    documentationCenter=""
    authors="stevelas"
@@ -18,11 +18,13 @@
    ms.date="10/07/2016"
    ms.author="stevelas"/>
 
->[AZURE.NOTE]Container Registry is currently in preview.
 
-# Get started working with images in an Azure container registry
+
+# Push your first image to a container registry using the Docker CLI
 
 The Azure Container Registry is a private instance of the public [Docker Hub](http://hub.docker.com). The Azure Container Registry integrates with Docker CLI for login, push and pull operations. 
+
+>[AZURE.NOTE]Container Registry is currently in private preview.
 
 
 ## Walk through
