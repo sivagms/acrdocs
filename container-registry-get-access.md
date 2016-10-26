@@ -50,7 +50,7 @@ az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRe
 
 **Important**
 
-Once you see that the state of your request is Pending, please send an email to `sajaya` or `sivag` to approve the feature registration request. After your request if approved, you are ready to use the Container Registry private preview!
+Once you see that the state of your request is Pending, please send an email to `SteveLas@Microsoft.com` to approve the feature registration request. After your request if approved, you are ready to use the Container Registry private preview!
 
  
 
