@@ -26,13 +26,13 @@ At this time, the Azure Container Registry CLI commands (**az acr** commands) ca
 ## Prerequisites
 * **Docker host** - To set up your local computer as a Docker host, see the [Docker documentation](https://docs.docker.com/engine/installation/).
 
-* **Container Registry Private Preview** - See the [instructions](container-registry-get-access.md) to register your Azure subscription and request access.
+* **Container Registry private preview** - See the [instructions](container-registry-get-access.md) to register your Azure subscription and request access.
 
 
 
 ## Download the Azure CLI Docker image
 
-To download the Azure CLI preview image in a Docker host on your computer, use the preview username and password shown in the following **docker login** command. 
+To download the Azure CLI 2.0 Preview image in a Docker host on your computer, use the preview username and password shown in the following **docker login** command. 
 
 ```
 docker login tryacr.azurecr.io -u 9489be1b-1dfb-4a71-9f03-bc7f8a09384e -p Microsoft
@@ -71,12 +71,7 @@ If you have multiple subscriptions, you'll likely want to verify, or possibly ch
 az account list
 ```
 
-If the default is not the subscription you wish to work with, change the default using:
 
-
-```
-az account set --name "[subscription name]"
-```
 
 You may see duplicate subscription names, making it difficult to set the default subscription.
 
@@ -90,23 +85,22 @@ You may see duplicate subscription names, making it difficult to set the default
              AzureCloud         aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  Enabled  CBA Azure Subscription
 ```
 
-Using the Azure Portal, select the subscriptions blade and copy the subscription Id you wish to make the default. Pass it to the **az account** command as follows:
+Using the [Azure portal](https://portal.azure.com), select the [Billing blade](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade) and copy the subscription Id you wish to make the default. Pass it to the **az account set** command as follows:
 
 ```
-az account set --name "[subscription id]"
+az account set --name "mySubscriptionId"
 
-az account set --name "f8888888-6666-5555-4444-333333333333"
 ```
 
 ##End the Session
-Hit [CTRL]+[D] to disconnect the session. This will end the session. However, the image is still available to restart with the same credentials and configurations, just as if the CLI was installed directly on your machine. 
+Hit [CTRL]+[D] to disconnect the session. This ends the session. However, the image is still available to restart with the same credentials and configurations, just as if the CLI was installed directly on your machine. 
 Find the container Id with `docker ps -a`, start the container, then attach to the running container, hitting [Enter] to get a # prompt.
 
 ```
 docker ps -a
-docker start [container id]
-docker attach [container id]
-[enter]
+docker start [container Id]
+docker attach [container Id]
+[Enter]
 ```
 
 ## Next steps

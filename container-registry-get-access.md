@@ -34,10 +34,14 @@ az resource feature register --namespace Microsoft.ContainerRegistry -n PrivateP
 
 ```
 
-You will see output similar to:
+If you run this command:
 
 ```
 az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRegistry
+```
+
+You'll see output similar to:
+```
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxxxxx/providers/Microsoft.Features/providers/Microsoft.ContainerRegistry/features/PrivatePreview",
   "name": "Microsoft.ContainerRegistry/PrivatePreview",
