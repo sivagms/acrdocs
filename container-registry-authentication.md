@@ -21,22 +21,23 @@
 # Authenticate with a container registry
 
 
->[AZURE.NOTE]The Container Registry service and **az acr** commands are currently in private preview.
 
-To push or pull container images from an existing Azure container registry, first authenticate with the registry by using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command. This article provides background about the identities you can use for authentication. For more about the Docker CLI commands you use with container registries, see [Get started working with images in an Azure container registry](./container-registry-get-started-docker-cli.md).
+To push or pull container images from an existing Azure container registry, first authenticate with the registry by using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command. This article provides background about the identities you can use for authentication. 
 
-[AZURE.NOTE]The Container Registry service is currently in private preview.
+For more about the Docker CLI commands you use with container registries, see [Get started working with images in an Azure container registry](./container-registry-get-started-docker-cli.md).
+
+>[AZURE.NOTE]Container Registry is currently in private preview.
 
 For private preview, you can login to a container registry using one of the following:
 
 
-* **[Azure Active Directory service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/)** - For private preview, this is the recommended method. This allows you to add individual users. Service principals also enable headless connectivity for CI/CD solutions (VSTS/Jenkins) to push images, and for deployments (for example, with Azure App Service, Container Service, or Batch) to pull images.  
+* **[Azure Active Directory service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/)** - For private preview, this is the recommended method. This allows you to assign roles to individual users. Service principals also enable headless connectivity for CI/CD solutions (VSTS/Jenkins) to push images, and for deployments (for example, with Azure App Service, Container Service, or Batch) to pull images.  
 
     The [**az acr** commands](./container-registry-get-started-azure-cli.md) make it easy to automatically create a default service principal when you create or update a registry, or assign an existing one.
 * **Admin account** - To support registry creation from the Azure portal, an admin account is 
-added to each new container registry. The admin account is intended only to allow Azure portal users a quick way to login to their newly created registry. 
+added to each new container registry. It is not recommended to share the admin account with other users. The admin account is intended only to allow an Azure portal user a quick way to login to their newly created registry. 
 
-    >[AZURE.IMPORTANT]It is not recommended to share the admin account with other users. All users will appear as a single user, and changing or disabling this account will disable all users that use the admin name and password. 
+    
 
 At this time, individual Azure Active Directory identities (which enable per-user access and control) are not supported to authenticate with a container registry. 
 
@@ -46,7 +47,7 @@ At this time, individual Azure Active Directory identities (which enable per-use
 
 An easy way to configure a container registry with a service principal is by creating a registry with the **az acr create** command. 
 
-For example, the following command creates a registry and a new service principal at the same time, in a resource group you previously created. Make sure to substitute your own resource names.
+For example, the following command creates a registry and a new service principal and password at the same time, in a resource group you previously created. Make sure to substitute your own resource names. 
 
 ```
 az acr create -n myRegistry -g myResourceGroup -l southcentralus --new-sp -p myPassword -r Owner
@@ -70,13 +71,15 @@ Once logged in, Docker caches the credentials, so you don't need to remember the
 >[AZURE.TIP] If you want, you can regenerate the password of the service principal by running the **az ad sp reset-credentials** command.
 
 ## Use an admin account
-To support creation from the Azure Portal an admin account will be created. The admin account is intended as a stop gap, allowing Azure Portal users a quick way to login to their newly created registry. 
- 
-**This feature will be removed once AAD is integrated into the new Azure Portal and/or integration with individual AAD Identity is completed. It is NOT recommended to use the admin account for access as individual as all users will use the same identity. Disabling the account or resetting the password will disable all users that have used the admin username/password.** 
+To support registry creation from the Azure portal, an admin account is automatically created. (The admin account is also automatically created and enabled when you use Azure CLI commands to create a registry.) The admin account is intended as a stopgap, allowing Azure portal users a quick way to login to their newly created registry. This feature will be removed in later versions of Container Registry that support Azure Active Directory identities.
 
-See Service Principals for adding individual users. 
+>[AZURE.IMPORTANT]It is not recommended to share the admin account with other users. All users will appear as a single user, and changing or disabling this account will disable all users that use the admin name and password. 
+ 
+
 
 ### Obtain admin user credentials
+
+You can obtain admin user credentials from the Azure portal
 
 ```
 az acr credential show -n myRegistry
