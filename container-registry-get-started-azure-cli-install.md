@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Container registries with the CLI | Microsoft Azure"
-   description="Get started Installing the Azure Container Registry with the az CLI"
+   pageTitle="Install the az acr commands | Microsoft Azure"
+   description="Install the Azure CLI 2.0 Preview for Azure Container Registry private preview"
    services="container-registry"
    documentationCenter=""
    authors="stevelas"
@@ -15,70 +15,53 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/07/2016"
+   ms.date="10/25/2016"
    ms.author="stevelas"/>
 
-# Request Access through Subscription Registration
+# Install the Azure CLI for Container Registry preview
 
-```
-Register-AzureRmProviderFeature -FeatureName "PrivatePreview" -ProviderNamespace "Microsoft.ContainerRegistry"
-
-```
-
-or using `az` cross-platform CLI:
-
-```
-az resource feature register --namespace Microsoft.ContainerRegistry -n PrivatePreview
-
-az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRegistry
-{
-  "id": "/subscriptions/27b750cd-ed43-42fd-9044-8d75e124ae55/providers/Microsoft.Features/providers/Microsoft.ContainerRegistry/features/PrivatePreview",
-  "name": "Microsoft.ContainerRegistry/PrivatePreview",
-  "properties": {
-    "state": "Pending"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-```
-
-Once you see that your request is pending please send an email to `sajaya` or `sivag` to approve the feature registration request.
+At this time, the Azure Container Registry CLI commands (**az acr** commands) can only be acquired using a Docker image of the Azure CLI 2.0 Preview.  
 
 
-# Getting the az CLI
+## Prerequisites
+* **Docker host** - To set up your local computer as a Docker host, see the [Docker documentation]().
 
-
->[AZURE.NOTE]Container Registry and Azure CLI 2.0 are currently in preview.
+* **Container Registry Private Preview** - See the [instructions](container-registry-get-access.md) to register your Azure subscription and request access.
 
 
 
-## Downloading the Azure Container Registry Preview CLI
-At this time the Azure Container Registry CLI can only be acquired using a docker image.  
-To download the az CLI preview image, use the preview username and password below. 
+## Download the Azure CLI Docker image
+
+To download the Azure CLI preview image in a Docker host on your computer, use the preview username and password shown in the following **docker login** command. 
 
 ```
 docker login tryacr.azurecr.io -u 9489be1b-1dfb-4a71-9f03-bc7f8a09384e -p Microsoft
+```
+
+To run the Docker image:
+```
 docker run -it tryacr.azurecr.io/cli
 ```
 
-To avoid having to login each time, it's recommended to stop and restart the container. Killing, removing the container and issuing a new docker run will require re-authenticating.
+To avoid having to login each time, it's recommended to stop and restart the container. Killing, removing the container, and issuing a new **docker run** will require reauthenticating.
 
-## Configuring the az CLI
+## Configure the  CLI
 To get started, there are a few configurations you'll likely want to make.
 
 ```
 az configure
 ```
    
-Follow the prompts to configure the output format, data collection and choose the azure environment (public azure, us-gov, china-cloud, azure-stack)
+Follow the prompts to configure the output format, data collection, and Azure environment (public azure, us-gov, china-cloud, azure-stack)
 
-## Logging into Azure
-To access resources in Azure, you'll need to complete the device login
+## Login to Azure
+To access resources in Azure, you need to complete the device login:
 
 ```
 az login
 ```
 
-Once you complete the device login flow, you'll have access to your azure resources
+Once you complete the device login flow, you'll have access to your Azure resources.
 
 
 ## Set the default subscription
@@ -107,16 +90,17 @@ You may see duplicate subscription names, making it difficult to set the default
              AzureCloud         aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  Enabled  CBA Azure Subscription
 ```
 
-Using the Azure Portal, select the subscritpions blade and copy the subscription id you wish to make the default and pass it to the `az account` CLI. 
+Using the Azure Portal, select the subscriptions blade and copy the subscription Id you wish to make the default. Pass it to the **az account** command as follows:
 
 ```
 az account set --name "[subscription id]"
+
 az account set --name "f8888888-6666-5555-4444-333333333333"
 ```
 
-## End the Session
-Hit [CTRL] + [D] to disconnect the session. This will end the session, however the image is still available to restart with the same credentials and configurations, just as if the CLI was installed directly on your machine. 
-Find the container id with `docker ps -a`, start the container, then attach to the running container, hitting [enter] to get a # prompt.
+##End the Session
+Hit [CTRL]+[D] to disconnect the session. This will end the session. However, the image is still available to restart with the same credentials and configurations, just as if the CLI was installed directly on your machine. 
+Find the container Id with `docker ps -a`, start the container, then attach to the running container, hitting [Enter] to get a # prompt.
 
 ```
 docker ps -a
@@ -127,9 +111,8 @@ docker attach [container id]
 
 ## Next steps
 
-* [Request Access to the ACR Private Preview](./container-registry-get-access.md)
-* [Create a new Azure Container Registry using the Azure Portal ](./container-registry-get-started-portal.md)
-* [Logging into the Azure Container Registry](container-registry-authentication.md) 
-* [Install Azure Container Registry CLI ](./container-registry-get-started-azure-cli-install.md)
-* [Create a new Azure Container Registry using the az CLI](./container-registry-get-started-azure-cli.md)
+* [Request access to the ACR private preview](./container-registry-get-access.md)
+* [Create a container registry using the Azure Portal ](./container-registry-get-started-portal.md)
+* [Login to a container registry](container-registry-authentication.md) 
+* [Create a container registry using the Azure CLI](./container-registry-get-started-azure-cli.md)
 * [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)
