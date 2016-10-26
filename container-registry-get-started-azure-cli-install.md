@@ -85,7 +85,7 @@ You may see duplicate subscription names, making it difficult to set the default
              AzureCloud         aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  Enabled  CBA Azure Subscription
 ```
 
-Using the [Azure portal](https://portal.azure.com), select the [Billing blade](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade) and copy the subscription Id you wish to make the default. Pass it to the **az account set** command as follows:
+Using the [Azure portal](https://portal.azure.com), select the [Subscriptions blade](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) and copy the subscription Id you wish to make the default. Pass it to the **az account set** command as follows:
 
 ```
 az account set --name "mySubscriptionId"

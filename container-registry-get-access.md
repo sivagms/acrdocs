@@ -42,6 +42,7 @@ az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRe
 
 You'll see output similar to:
 ```
+[
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxxxxx/providers/Microsoft.Features/providers/Microsoft.ContainerRegistry/features/PrivatePreview",
   "name": "Microsoft.ContainerRegistry/PrivatePreview",
@@ -50,6 +51,7 @@ You'll see output similar to:
   },
   "type": "Microsoft.Features/providers/features"
 }
+]
 ```
 
 **Important**
