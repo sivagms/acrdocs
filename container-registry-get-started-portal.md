@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Container Registry in the Portal | Microsoft Azure"
-   description="Get started with the Azure Container Registry in the Azure portal..."
+   pageTitle="Create a container registry in the portal | Microsoft Azure"
+   description="Get started creating and managing Azure container registries with the Azure portal"
    services="container-registry"
    documentationCenter=""
    authors="stevelas"
@@ -55,17 +55,36 @@ Use the Azure portal to create a container registry and manage its settings. You
 
     d. **Admin user** - If you want, enable an admin user to access the registry. You can change this setting after creating the registry.
     
-    >[AZURE.IMPORTANT]The admin user is intended only to test login to a newly created registry. In Preview, we recommend using an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) to access the registry. For more information, see [Authenticate with thea container registry](container-registry-authenticate.md).
+    >[AZURE.IMPORTANT]The admin user is intended only to test login to a newly created registry. In Preview, we recommend using an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) to access the registry. For more information, see [Authenticate with a container registry](container-registry-authenticate.md).
     
     e. **Storage account** - Use the default for creating a new storage account, or select an existing storage account.
     
     ![Container registry settings](./media/container-registry-get-started-portal/container-registry-settings.png)
     
+## Manage registry settings
+
+After creating the registry, find the registry settings by starting at the **Container Registries** blade in the portal. For example, you might need the settings to login to your registry.
+
+1. On the **Container Registries** blade, click the name of your registry.
+
+    ![Container registry blade](./media/container-registry-get-started-portal/container-registry-blade.png)
+
+2. To manage access settings, click **Access key**.
+
+    ![Container registry access](./media/container-registry-get-started-portal/container-registry-access.png)
     
+3. Note the following settings:
+
+    * **Login server** - The fully qualified registry name you use when you login to push and pull Docker images.
+    
+    * **Admin user** - Toggle to enable or disable the registry's admin user account.
+    
+    * **Username** and **Password** - The credentials of the admin user account (if enabled) you can use to test login to the registry. 
+
 ## Next steps
 * [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)
 
 ## Additional docs
 * [Create a container registry using the Azure CLI](./container-registry-get-started-azure-cli.md)
-* [Login to a container registry](container-registry-authentication.md) 
+* [Authenticate with a container registry](container-registry-authentication.md) 
 * [Install the Azure CLI for Container Registry preview](./container-registry-get-started-azure-cli-install.md)
