@@ -20,15 +20,15 @@
 
 # Install the Azure CLI for Container Registry preview
 
-At this time, the Azure Container Registry CLI commands (**az acr** commands) can only be acquired using a Docker image of the Azure CLI 2.0 Preview.  
+For Container Registry private preview, the Azure Container Registry CLI commands (**az acr** commands) can only be acquired using a Docker image of the Azure CLI 2.0 Preview.  
 
 
 ## Prerequisites
-* **Docker host** - To set up your local computer as a Docker host, see the [Docker documentation](https://docs.docker.com/engine/installation/).
+
 
 * **Container Registry private preview** - See the [instructions](container-registry-get-access.md) to register your Azure subscription and request access.
 
-
+* **Docker host** - To set up your local computer as a Docker host, see the [Docker documentation](https://docs.docker.com/engine/installation/).
 
 ## Download the Azure CLI Docker image
 
@@ -105,8 +105,11 @@ docker attach [container Id]
 
 ## Next steps
 
-* [Request access to the ACR private preview](./container-registry-get-access.md)
-* [Create a container registry using the Azure Portal ](./container-registry-get-started-portal.md)
-* [Login to a container registry](container-registry-authentication.md) 
 * [Create a container registry using the Azure CLI](./container-registry-get-started-azure-cli.md)
+
+## Additional docs
+
+* [Request access to the ACR private preview](./container-registry-get-access.md)
+* [Create a container registry using the Azure portal ](./container-registry-get-started-portal.md)
+* [Login to a container registry](container-registry-authentication.md) 
 * [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)

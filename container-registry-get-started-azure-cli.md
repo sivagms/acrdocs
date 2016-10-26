@@ -21,7 +21,7 @@
 # Create a container registry using the Azure CLI
 
 
-Use Azure Command-Line Interface (CLI) commands to create and manage Azure container registries from the command line of your Linux, Mac, or Windows computer. You can also work with container registries using the [Azure portal](container-registry-get-started-portal.md) or programmatically with the container registry APIs.
+Use Azure Command-Line Interface (CLI) commands to create an Azure container registries from your Linux, Mac, or Windows computer. You can also work with container registries using the [Azure portal](container-registry-get-started-portal.md) or programmatically with the container registry APIs.
 
 For help on Container Registry CLI commands (**az acr** commands), pass the `-h` parameter to any command.
 
@@ -39,7 +39,7 @@ For background and concepts, see [What is Azure Container Registry?](container-r
 
 * **Storage account** (optional) - Create a storage account to back the container registry in the same resource group. If you don't specify a storage account when creating a registry with **az acr create**, the command creates one for you. To create a storage account using the CLI 2.0 Preview, see [the CLI 2.0 Preview samples](https://github.com/Azure/azure-cli-samples/tree/master/storage).
 
-* **Service principal** (optional) - For Preview, we recommend using an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) to access the registry. For more information, see [Authenticate with the container registry](container-registry-authenticate.md). The CLI makes it easy to automatically create a default service principal when you create or update a registry, or assign an existing one. To create a service principal that you assign to a registry, see [Create a service principal](#create-a-service-principal). 
+* **Service principal** (optional) - For private preview, we recommend using an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) to access the registry. For more information, see [Authenticate with the container registry](container-registry-authenticate.md). The CLI makes it easy to automatically create a default service principal when you create or update a registry, or assign an existing one. To create a service principal that you assign to a registry, see [Create a service principal](#create-a-service-principal). 
 
 
 ## Create a container registry
@@ -181,8 +181,7 @@ az acr repository show-tags -n Registry --repository samples/nginx -o jsonz`
 ## Next steps
 * [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)
 
-# Additional docs
+## Additional docs
 * [Create a container registry using the Azure portal](./container-registry-get-started-portal.md)
 * [Login to a container registry](container-registry-authentication.md) 
-* [Install Azure CLI for Container Registry preview](./container-registry-get-started-azure-cli-install.md)
-* [Create a container registry using the Azure CLI](./container-registry-get-started-azure-cli.md)
+* [Install the Azure CLI for Container Registry preview](./container-registry-get-started-azure-cli-install.md)

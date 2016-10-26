@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Container registries with the CLI | Microsoft Azure"
-   description="Get started using the Azure Container Registry with the az CLI..."
+   pageTitle="Authenticate with a container registry | Microsoft Azure"
+   description="Methods to authenticate with an Azure container registry by using the Azure CLI"
    services="container-registry"
    documentationCenter=""
    authors="stevelas"
@@ -15,47 +15,43 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/07/2016"
+   ms.date="10/25/2016"
    ms.author="stevelas"/>
 
-# Authenticating with the Azure Container Registry
+# Authenticate with a container registry
 
 
->[AZURE.NOTE]Azure Container Registry and az CLI are currently in preview.
+>[AZURE.NOTE]The Container Registry service and **az acr** commands are currently in private preview.
+
+To push or pull container images from an existing Azure container registry, users must authenticate with the registry. For private preview, users can authenticate with a container registry using the following methods:
 
 
-Users can authenticate with the Azure Container Registry using 3 methods:
+* **[Azure Active Directory service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/)** - For private preview, this is the recommended method. This allows you to manage individual users. Service principals also enable headless connectivity for CI/CD solutions (VSTS/Jenkins) to push images and for deployments (for example, with Azure App Service, Container Service, or Batch) to pull images.  
+* **Admin account** - To support registry creation from the Azure portal, an admin account is 
+added to each new container registry. The admin account is intended as a stopgap, allowing Azure portal users a quick way to login to their newly created registry. 
 
-* **Azure Active Directory Individual Identity** </br>
-enabling per user access and control. *[not yet supported.]*
-* **[Azure AD Service Principals](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/)** </br> 
-which enables headless connectivity for CI/CD solutions (VSTS/Jenkins) to push images and deployments (App Service, ACS, Batch) to pull images.  
-* **Admin Account**</br>
-added to each newly created Container Registry. This account was added as a workaround for getting started quickly, until AAD Individual Identities are supported. **Note: it is not recommended to share this account with other users. All users will appear as a single user. Changing or disabling this account will disable all users. By using Service Principals, you can manage individual users.    
+>[AZURE.IMPORTANT]It is not recommended to share this account with other users. All users will appear as a single user, and changing or disabling this account will disable all users that use the admin name and password. 
 
-The easiest way to configure a Container Registry with service principals uses the az CLI. See [Getting Started with the acr CLI](./container-registry-get-started-azure-cli.md)
+For private preview, individual Azure Active Directory identities are not supported to authenticate with a container registry. 
+enabling per user access and control. 
 
-## Using Service Principals 
 
-### Assign a new Service Principal to an existing registry
+## Use service principals 
 
-```
-az acr update -n myRegistry --new-sp -p myPassword -r Owner
-```
+The easiest way to configure a container registry with a service principal is by creating a registry with the **az acr create** command. The CLI makes it easy to automatically create a default service principal when you create or update a registry, or assign an existing one. 
 
-* `--password` or `-p` is optional. A random password will be generated if not specified.<br>
-* `--role` or `-r` will grant the service principal access to the registry with the specified role name.
-
-# Assign an existing Service Principal to an existing registry
+For example, the following command creates a registry and a new service principal at the same time:
 
 ```
-az acr update -n myRegistry --app-id 7fcc3bb8-98d3-4324-87a5-a7d2fffdc703 -r Owner
+az acr create -n myRegistry -g myResourceGroup -l southcentralus --new-sp -p myPassword -r Owner
 ```
 
-* `app-id` is the app id for an existing service principal.<br>
-* `---role` or `-r` will grant the service principal access to the registry with the specified role name.
+See [Create a container registry with the Azure CLI](./container-registry-get-started-azure-cli.md) for more background and examples to assign a service principal to a registry.
 
-# Docker login using a Service Principal
+For example, if you would like to create your own service principal using the Azure Active Directory CLI commands, see [Create a service principal](./container-registry-get-started-azure-cli.md#create-a-service-principal). You can then specify the service principal when you create a registry, or assign the service principal to an existing registry using the **az acr update** command.
+
+
+## Docker login using a service principal
 
 You can login to Docker using your service pricipal credentials (tips: you can always regenerate a new password):
 ```
@@ -63,24 +59,6 @@ docker login myRegistry.azurecr.io -u 7fcc3bb8-98d3-4324-87a5-a7d2fffdc703 -p my
 ```
 
 Once logged in, Docker will cache the credentials, avoiding the need to remember the Service Principal GUID.
-
-# Create a new Service Principal
-
-If you would like to create a new service principal using AAD command module, you will need to create an application first if you don't have one. 
-
-```
-az ad app create --display-name sp-test --homepage http://sp-test --identifier-uris http://sp-test --password myPassword
-```
-
-* `--password` is optional, and you can always regenerate a new password.<br>
-* `--homepage` and `--identifier-uris` can be anything, but they at least should be an URI. Use the login url, myregistry.azurecr.io as a default.
-
-1. Save the `appId` from the output, you will use it to create a service principal.
-2. Then you can create an service pricipal from the created application:
-
-```
-az ad sp create --id 7fcc3bb8-98d3-4324-87a5-a7d2fffdc703
-```
 
 
 # Admin Credentials
