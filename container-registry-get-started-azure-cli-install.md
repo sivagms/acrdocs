@@ -24,7 +24,7 @@ At this time, the Azure Container Registry CLI commands (**az acr** commands) ca
 
 
 ## Prerequisites
-* **Docker host** - To set up your local computer as a Docker host, see the [Docker documentation]().
+* **Docker host** - To set up your local computer as a Docker host, see the [Docker documentation](https://docs.docker.com/engine/installation/).
 
 * **Container Registry Private Preview** - See the [instructions](container-registry-get-access.md) to register your Azure subscription and request access.
 
