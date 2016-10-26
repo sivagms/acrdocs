@@ -1,4 +1,4 @@
-https://docs.docker.com/engine/installation/<properties
+<properties
    pageTitle="Install the az acr commands | Microsoft Azure"
    description="Install the Azure CLI 2.0 Preview for Azure Container Registry private preview"
    services="container-registry"
