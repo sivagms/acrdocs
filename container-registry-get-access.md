@@ -34,10 +34,15 @@ az resource feature register --namespace Microsoft.ContainerRegistry -n PrivateP
 
 ```
 
-You will see output similar to:
+If you run this command:
 
 ```
 az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRegistry
+```
+
+You'll see output similar to:
+```
+[
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxxxxx/providers/Microsoft.Features/providers/Microsoft.ContainerRegistry/features/PrivatePreview",
   "name": "Microsoft.ContainerRegistry/PrivatePreview",
@@ -46,6 +51,7 @@ az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRe
   },
   "type": "Microsoft.Features/providers/features"
 }
+]
 ```
 
 **Important**
@@ -56,9 +62,9 @@ Once you see that the state of your request is Pending, please send an email to 
 
 
 ## Next steps
-* [Create a container registry using the Azure Portal](./container-registry-get-started-portal.md)
-* [Login to the container registry](container-registry-authentication.md) 
-* [Install the Azure Container Registry CLI](./container-registry-get-started-azure-cli-install.md)
-* [Create a container registry using the az CLI](./container-registry-get-started-docker-cli.md)
+* [Create a container registry using the Azure portal](./container-registry-get-started-portal.md)
+* [Login to a container registry](container-registry-authentication.md) 
+* [Install the Azure CLI for Container Registry preview](./container-registry-get-started-azure-cli-install.md)
+* [Create a container registry using the Azure CLI](./container-registry-get-started-docker-cli.md)
 * [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md)
  
