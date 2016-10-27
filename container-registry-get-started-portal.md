@@ -21,7 +21,6 @@
 # Create a container registry using the Azure portal
 
 Use the Azure portal to create a container registry and manage its settings. You can also work with container registries using the [Azure CLI commands](container-registry-get-started-azure-cli.md) or programmatically with the Container Registry APIs.
-
 * For background and concepts, see [What is Azure Container Registry?](container-registry-intro.md)
 
 * To get started with Docker images in your registry, see [Push your first image using the Docker CLI](./container-registry-get-started-docker-cli.md).
@@ -51,7 +50,7 @@ Use the Azure portal to create a container registry and manage its settings. You
     
     b. **Resource group** - Select an existing [Resource group](../resource-group-overview.md#resource-groups) or type the name for a new one. 
     
-    c. **Location ** - Select an Azure datacenter location where the service is available, such as **South Central US**. 
+    c. **Location** - Select an Azure datacenter location where the service is available, such as **South Central US**. 
 
     d. **Admin user** - If you want, enable an admin user to access the registry. You can change this setting after creating the registry.
     
