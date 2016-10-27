@@ -74,10 +74,10 @@ Using the [**az acr** commands](./container-registry-get-started-azure-cli.md#ma
 
 
 
-You can authenticate with your container registry using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command and your registry credentials. The following example shows how to pass the service principal credentials (app ID and password), which is recommended:
+You can authenticate with your container registry using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command and your registry credentials. The following example shows how to pass the service principal credentials (Id and password), which is recommended:
 
 ```
-docker login myRegistry-exp.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+docker login myregistry-exp.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
 Once logged in, Docker caches the credentials, so you don't need to remember the service principal Id.

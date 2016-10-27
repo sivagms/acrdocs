@@ -48,7 +48,7 @@ Use Azure Command-Line Interface (CLI) commands to create a container registry a
 
 Run the **az acr create** command to create a container registry, as shown in the following examples. 
 
->[AZURE.TIP]When you create a registry, specify a globally unique top-level domain name, such as an organizational name, containing only letters and numbers. The registry name in the examples is **myRegistry**, but substitute a unique name of your own. When you [login to the registry](./container-registry-authentication.md), use the fully qualified name **myregistry-exp.azurecr.io** (all lowercase; the "-exp" in the prefix is only required for preview).
+>[AZURE.TIP]When you create a registry, specify a globally unique top-level domain name, such as an organizational name, containing only letters and numbers. The registry name in the examples is **myRegistry**, but substitute a unique name of your own. When you [login to the registry](./container-registry-authentication.md), use the fully qualified name **myregistry-exp.azurecr.io** (all lowercase; the **-exp** in the prefix is required for preview).
   
 
 ### Create a container registry with the minimal parameters
@@ -76,7 +76,7 @@ az acr create -n myRegistry -g myResourceGroup -l southcentralus --new-sp -p myP
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
-
+The service principal Id is returned in the command output.
 
 
 ### Create a container registry with an existing service principal
@@ -87,7 +87,7 @@ If you already created an Azure Active Directory service principal, you can spec
 az acr create -n myRegistry -g myResourceGroup -l southcentralus --app-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -r Owner
 ```
 
-* `app-id` is the Id for an existing service principal.
+* `--app-id` is the Id for an existing service principal.
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
@@ -108,13 +108,15 @@ az acr update -n myRegistry --new-sp -p myPassword -r Owner
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
+The service principal Id is returned in the command output.
+
 ### Assign an existing service principal to a registry
 
 ```
 az acr update -n myRegistry --app-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -r Owner
 ```
 
-* `app-id` is the Id for an existing service principal.
+* `--app-id` is the Id for an existing service principal.
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
@@ -168,14 +170,17 @@ However, use the **az acr** CLI commands to query the list of images and tags.
 
 ### List repositories 
 
+The following example lists the repositories in a registry, in JSON (JavaScript Object Notation) format:
+
 ```
-az acr repository list -n myRegistry -o json`
+az acr repository list -n myRegistry -o json
 ```
 
 ### List tags
+The following example lists the tags on the **samples/nginx** repository, in JSON format:
 
 ```
-az acr repository show-tags -n Registry --repository samples/nginx -o jsonz`
+az acr repository show-tags -n myRegistry --repository samples/nginx -o json
 ```
 
 ## Next steps
