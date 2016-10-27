@@ -88,7 +88,7 @@ docker pull myregistry-exp.azurecr.io/samples/nginx
 
 **6. Start the Nginx container from your registry**
 ```
-docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
+docker run -it --rm -p 8080:80 myregistry-exp.azurecr.io/samples/nginx
 ```
 
 Browse to [http://localhost:8080](http://localhost:8080) to view the running container.
@@ -111,5 +111,5 @@ Start deploying images to the [Azure Container Service](https://azure.microsoft.
 * [Create a container registry using the Azure portal ](./container-registry-get-started-portal.md)
 * [Authenticate with a container registry](container-registry-authentication.md) 
 * [Install the Azure CLI for container Registry ](./container-registry-get-started-azure-cli-install.md)
-* [Create acontainer registry using the Azure CLI](./container-registry-get-started-docker-cli.md)
+* [Create a container registry using the Azure CLI](./container-registry-get-started-docker-cli.md)
 

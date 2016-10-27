@@ -170,14 +170,17 @@ However, use the **az acr** CLI commands to query the list of images and tags.
 
 ### List repositories 
 
+The following example lists the repositories in a registry, in JSON (JavaScript Object Notation) format:
+
 ```
 az acr repository list -n myRegistry -o json`
 ```
 
 ### List tags
+The following example lists the tags on the **samples/nginx** repository, in JSON format:
 
 ```
-az acr repository show-tags -n Registry --repository samples/nginx -o jsonz`
+az acr repository show-tags -n myRegistry --repository samples/nginx -o json`
 ```
 
 ## Next steps
