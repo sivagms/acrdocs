@@ -51,7 +51,7 @@ Use the Azure portal to create a container registry and manage its settings. You
     
     b. **Resource group** - Select an existing [Resource group](../resource-group-overview.md#resource-groups) or type the name for a new one. 
     
-    c. **Location ** - Select an Azure datacenter **Location** where the service is available, such as **South Central US**. 
+    c. **Location ** - Select an Azure datacenter location where the service is available, such as **South Central US**. 
 
     d. **Admin user** - If you want, enable an admin user to access the registry. You can change this setting after creating the registry.
     
