@@ -22,7 +22,7 @@
 
 # Push your first image to a container registry using the Docker CLI
 
-The Azure Container Registry is a private instance of the public [Docker Hub](http://hub.docker.com). You use the [Docker Command-Line Interface](https://docs.docker.com/engine/reference/commandline/cli/)  (Docker CLI) for [login](https://docs.docker.com/engine/reference/commandline/login/), [push](https://docs.docker.com/engine/reference/commandline/push/), [pull](https://docs.docker.com/engine/reference/commandline/pull/) and other operations on your container registry. 
+The Azure Container Registry is a private instance of the public [Docker Hub](http://hub.docker.com). You use the [Docker Command-Line Interface](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) for [login](https://docs.docker.com/engine/reference/commandline/login/), [push](https://docs.docker.com/engine/reference/commandline/push/), [pull](https://docs.docker.com/engine/reference/commandline/pull/), and other operations on your container registry. 
 
 >[AZURE.NOTE]Container Registry is currently in private preview.
 
