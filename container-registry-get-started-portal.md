@@ -42,7 +42,7 @@ Use the Azure portal to create a container registry and manage its settings. You
 2. Search the marketplace for **container registry**.
 3. Select **Container Registry (preview)**, with publisher **Microsoft**. 
 
-    ![Container Registry service in Azure Marketplace](./media/container-registry-get-started-portal/container-registry-marketplace.PNG)
+    ![Container Registry service in Azure Marketplace](./media/container-registry-get-started-portal/container-registry-marketplace.png)
     
 4. Click **Create**.
 5. In the **Container Registry** blade, enter the following information. Click **Create** when you are done.
@@ -67,11 +67,11 @@ After creating the registry, find the registry settings by starting at the **Con
 
 1. On the **Container Registries** blade, click the name of your registry.
 
-    ![Container registry blade](./media/container-registry-get-started-portal/container-registry-blade.PNG)
+    ![Container registry blade](./media/container-registry-get-started-portal/container-registry-blade.png)
 
 2. To manage access settings, click **Access key**.
 
-    ![Container registry access](./media/container-registry-get-started-portal/container-registry-access.PNG)
+    ![Container registry access](./media/container-registry-get-started-portal/container-registry-access.png)
     
 3. Note the following settings:
 
