@@ -48,7 +48,7 @@ Use Azure Command-Line Interface (CLI) commands to create a container registry a
 
 Run the **az acr create** command to create a container registry, as shown in the following examples. 
 
->[AZURE.TIP]When you create a registry, specify a globally unique top-level domain name, such as an organizational name, containing only letters and numbers. The registry name in the examples is **myRegistry**, but substitute a unique name of your own. When you [login to the registry](./container-registry-authentication.md), use the fully qualified name **myregistry-exp.azurecr.io** (all lowercase; the "-exp" in the prefix is only required for preview).
+>[AZURE.TIP]When you create a registry, specify a globally unique top-level domain name, such as an organizational name, containing only letters and numbers. The registry name in the examples is **myRegistry**, but substitute a unique name of your own. When you [login to the registry](./container-registry-authentication.md), use the fully qualified name **myregistry-exp.azurecr.io** (all lowercase; the **-exp** in the prefix is required for preview).
   
 
 ### Create a container registry with the minimal parameters
