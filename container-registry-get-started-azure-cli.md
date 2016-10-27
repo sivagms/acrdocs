@@ -76,7 +76,7 @@ az acr create -n myRegistry -g myResourceGroup -l southcentralus --new-sp -p myP
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
-
+The service principal Id is returned in the command output.
 
 
 ### Create a container registry with an existing service principal
@@ -87,7 +87,7 @@ If you already created an Azure Active Directory service principal, you can spec
 az acr create -n myRegistry -g myResourceGroup -l southcentralus --app-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -r Owner
 ```
 
-* `app-id` is the Id for an existing service principal.
+* `--app-id` is the Id for an existing service principal.
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
@@ -108,13 +108,15 @@ az acr update -n myRegistry --new-sp -p myPassword -r Owner
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
+The service principal Id is returned in the command output.
+
 ### Assign an existing service principal to a registry
 
 ```
 az acr update -n myRegistry --app-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -r Owner
 ```
 
-* `app-id` is the Id for an existing service principal.
+* `--app-id` is the Id for an existing service principal.
 
 * `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
