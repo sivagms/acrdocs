@@ -1,6 +1,6 @@
 <properties
    pageTitle="Authenticate with a container registry | Microsoft Azure"
-   description="Methods to authenticate with an Azure container registry by using the Azure CLI"
+   description="How to authentiate with an Azure container registry with a service principal or a user account"
    services="container-registry"
    documentationCenter=""
    authors="stevelas"
