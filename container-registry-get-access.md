@@ -18,7 +18,19 @@
    ms.date="10/25/2016"
    ms.author="stevelas"/>
 
-# Request Access to the Azure Container Registry private preview
+# Register your subscription with the Resource Provider
+
+```
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
+```
+
+or using `az` cross-platform CLI:
+
+```
+$ az resource provider register -n "Microsoft.ContainerRegistry"
+```
+
+# Request Access for Private Preview
 
 To get started, request access to the Container Registry private preview by running this [Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) command:
 
