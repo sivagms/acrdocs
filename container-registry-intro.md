@@ -3,7 +3,7 @@
    description="Introduction to the Azure Container Registry service, providing cloud-based, managed, private Docker registries."
    services="container-registry"
    documentationCenter=""
-   authors="stvelas"
+   authors="stevelas"
    manager="balans"
    editor="dlepow"
    tags=""
