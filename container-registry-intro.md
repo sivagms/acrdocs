@@ -54,7 +54,7 @@ For background about Docker and containers, see:
 ## Deployment targets
 Deploy containers from an Azure container registry to a variety of deployment targets:
 
-* **Scalable orchestration systems** that manage containerized applicationss across clusters of hosts, including [DC/OS](https://docs.mesosphere.com/), [Docker Swarm](https://docs.docker.com/swarm/), and [Kubernetes](http://kubernetes.io/docs/).
+* **Scalable orchestration systems** that manage containerized applications across clusters of hosts, including [DC/OS](https://docs.mesosphere.com/), [Docker Swarm](https://docs.docker.com/swarm/), and [Kubernetes](http://kubernetes.io/docs/).
 
 * **Azure services** that support building and running applications at scale, including [Container Service](https://azure.microsoft.com/en-us/documentation/services/container-service/), [App Service](https://azure.microsoft.com/en-us/documentation/services/app-service/), and [Batch](https://azure.microsoft.com/en-us/documentation/services/batch/). 
 
