@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Access to Container Registry [revoew | Microsoft Azure"
+   pageTitle="Access to Container Registry preview | Microsoft Azure"
    description="Request access to the Azure Container Registry private preview."
    services="container-registry"
    documentationCenter=""
@@ -18,35 +18,42 @@
    ms.date="10/25/2016"
    ms.author="stevelas"/>
 
-# Register your subscription with the Resource Provider
+# Access to the Container Registry private preview
+
+Here are one-time steps to get access to the Container Registry private preview from you your Azure subscription.
+
+## Step 1: Register your subscription with the resource provider
+
+Using [Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/):
 
 ```
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 ```
 
-or using `az` cross-platform CLI:
+Using the [Azure CLI 2.0 Preview](https://github.com/azure/azure-cli):
 
 ```
 $ az resource provider register -n "Microsoft.ContainerRegistry"
+
 ```
 
-# Request Access for Private Preview
+## Step 2: Register with the Container Registry feature
 
-To get started, request access to the Container Registry private preview by running this [Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) command:
+Using Azure PowerShell:
 
 ```
 Register-AzureRmProviderFeature -FeatureName "PrivatePreview" -ProviderNamespace "Microsoft.ContainerRegistry"
 
 ```
 
-or using the [Azure CLI 2.0 Preview](https://github.com/azure/azure-cli):
+Using the Azure CLI 2.0 Preview:
 
 ```
 az resource feature register --namespace Microsoft.ContainerRegistry -n PrivatePreview
 
 ```
 
-If you run this command:
+If you run this CLI command:
 
 ```
 az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRegistry
@@ -54,7 +61,6 @@ az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRe
 
 You'll see output similar to:
 ```
-[
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxxxxx/providers/Microsoft.Features/providers/Microsoft.ContainerRegistry/features/PrivatePreview",
   "name": "Microsoft.ContainerRegistry/PrivatePreview",
@@ -63,7 +69,6 @@ You'll see output similar to:
   },
   "type": "Microsoft.Features/providers/features"
 }
-]
 ```
 
 **Important**
