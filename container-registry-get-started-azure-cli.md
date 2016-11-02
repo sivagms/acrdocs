@@ -107,7 +107,7 @@ az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 ## Manage admin credentials
-An admin account is automatically created for each container registry and is disabled by default. The admin account is intended only as a stopgap, mainly for Azure portal users to have a quick way to login to a newly created registry. For Container Registry preview, use of a service principal is recommended. 
+An admin account is automatically created for each container registry and is disabled by default. The admin account is intended only as a stopgap, mainly for Azure portal users to test login to a newly created registry. It is not recommended to share the admin account with other users. For Container Registry preview, use of a service principal is recommended. 
  
 The following examples show **az acr** CLI commands to manage the admin credentials for your container registry.
 
