@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/25/2016"
+   ms.date="11/02/2016"
    ms.author="stevelas"/>
 
 # Create a container registry using the Azure portal
@@ -48,7 +48,7 @@ Use the Azure portal to create a container registry and manage its settings. You
 
     a. **Registry name** - A globally unique DNS name for your specific registry. In this example. the registry name is *myRegistry01*, but substitute a unique name of your own. The name can contain only letters and numbers.
     
-    b. **Resource group** - Select an existing [Resource group](../resource-group-overview.md#resource-groups) or type the name for a new one. 
+    b. **Resource group** - Select an existing [resource group](../resource-group-overview.md#resource-groups) or type the name for a new one. 
     
     c. **Location** - Select an Azure datacenter location where the service is available, such as **South Central US**. 
 

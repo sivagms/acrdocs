@@ -34,9 +34,7 @@ Login to a container registry using one of the following identities:
 * **[Azure Active Directory service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/)** - For private preview, this is the recommended method. This allows you to assign roles to individual users. Service principals also enable headless connectivity for CI/CD solutions (VSTS/Jenkins) to push images, and for deployments (for example, with Azure App Service, Container Service, or Batch) to pull images.  
 
 * **Admin account** - To support registry creation from the Azure portal, an admin account is 
-added to each new container registry. The admin account is intended only to allow an Azure portal user a quick way to login to their newly created registry. It is not recommended to share the admin account with other users. 
-
-    
+added to each new container registry. The admin account is intended only to allow an Azure portal user to test login to their newly created registry. It is not recommended to share the admin account with other users. 
 
 At this time, individual Azure Active Directory identities (which enable per-user access and control) are not supported to authenticate with a container registry. 
 
@@ -44,17 +42,10 @@ At this time, individual Azure Active Directory identities (which enable per-use
 
 ## Service principal 
 
-A straightforward way to configure a container registry with a service principal is by creating a registry with the [**az acr** commands](./container-registry-get-started-azure-cli.md). You can automatically create a default service principal when you create or update a registry, or assign an existing one.
+A straightforward way to configure a container registry with a service principal is by using the [Azure CLI 2.0 Preview commands](./container-registry-get-started-azure-cli.md). After creating a registry with the **az acr create** command, you can [assign a service principal](./container-registry-get-started-azure-cli.md#assign-a-service-principal) - either a service principal you create yourself, or an existing one.  
 
-For example, the following command creates a registry and a new service principal and password at the same time, in a resource group you previously created. Make sure to substitute your own resource names. 
+For registry operations, the service principal should be assigned in the Owner role. 
 
-```
-az acr create -n myRegistry -g myResourceGroup -l southcentralus --new-sp -p myPassword -r Owner
-```
-
-See [Create a container registry with the Azure CLI](./container-registry-get-started-azure-cli.md) for more background and examples to assign a service principal to a registry.
-
-For example, if you would like to create your own service principal using the Azure Active Directory CLI commands, see [Create a service principal](./container-registry-get-started-azure-cli.md#create-a-service-principal). You can then specify the service principal when you create a registry, or assign the service principal to an existing registry using the **az acr update** command.
 
 
 
@@ -74,13 +65,13 @@ Using the [**az acr** commands](./container-registry-get-started-azure-cli.md#ma
 
 
 
-You can authenticate with your container registry using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command and your registry credentials. The following example shows how to pass the service principal credentials (Id and password), which is recommended:
+You can authenticate with your container registry using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command and your registry credentials. The following example shows how to pass the service principal credentials (tenant Id and password), which is recommended:
 
 ```
 docker login myregistry-exp.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
-Once logged in, Docker caches the credentials, so you don't need to remember the service principal Id.
+Once logged in, Docker caches the credentials, so you don't need to remember the tenant Id.
 
 >[AZURE.TIP] If you want, you can regenerate the password of the service principal by running the **az ad sp reset-credentials** command.
 

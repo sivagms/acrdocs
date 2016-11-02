@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/25/2016"
+   ms.date="11/02/2016"
    ms.author="stevelas"/>
 
 
@@ -35,15 +35,13 @@ The Azure Container Registry is a private instance of the public [Docker Hub](ht
 
 ## Login to a registry
 
-Run **docker login** to login to your container registry with your [registry credentials](./container-registry-authentication.md). We recommend that you login with an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) that you assign to your registry. Make sure to use the fully qualified registry name (all lowercase; the **-exp** in the prefix is required for preview).
+Run **docker login** to login to your container registry with your [registry credentials](./container-registry-authentication.md). We recommend that you login with an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) that you assign to your registry. 
 
-The following example passes the service principal Id and password:
+The following example passes the service principal ID and password. Make sure to Fspecify he fully qualified registry name (all lowercase; the **-exp** in the prefix is required for preview).
 
 ```
 docker login myregistry-exp.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
-
- 
 
 
 ## Walkthrough to pull and push an image
