@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/25/2016"
+   ms.date="11/02/2016"
    ms.author="stevelas"/>
 
 # Create a container registry using the Azure CLI
@@ -41,19 +41,17 @@ Use Azure Command-Line Interface (CLI) commands to create a container registry a
 
 * **Storage account** (optional) - Create a storage account to back the container registry in the same resource group. If you don't specify a storage account when creating a registry with **az acr create**, the command creates one for you. To create a storage account using the CLI 2.0 Preview, see [the CLI 2.0 Preview samples](https://github.com/Azure/azure-cli-samples/tree/master/storage).
 
-* **Service principal** (optional) - For private preview, we recommend using an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) to access the registry. For more information, see [Authenticate with the container registry](container-registry-authenticate.md). The CLI makes it easy to automatically create a default service principal when you create or update a registry, or assign an existing one. To create a service principal that you assign to a registry, see [Create a service principal](#create-a-service-principal). 
+* **Service principal** (optional) - For private preview, we recommend using an Azure Active Directory [service principal](https://azure.microsoft.com/documentation/articles/active-directory-application-objects/) to access the registry. After creating a registry, you can create and assign a service principal, or assign an existing service principal.  
 
 
 ## Create a container registry
 
-Run the **az acr create** command to create a container registry, as shown in the following examples. 
+Run the **az acr create** command to create a container registry. 
 
->[AZURE.TIP]When you create a registry, specify a globally unique top-level domain name, such as an organizational name, containing only letters and numbers. The registry name in the examples is **myRegistry**, but substitute a unique name of your own. When you [login to the registry](./container-registry-authentication.md), use the fully qualified name **myregistry-exp.azurecr.io** (all lowercase; the **-exp** in the prefix is required for preview).
-  
+>[AZURE.TIP]When you create a registry, specify a globally unique top-level domain name, such as an organizational name, containing only letters and numbers. The registry name in the examples is **myRegistry**, but substitute a unique name of your own. 
 
-### Create a container registry with the minimal parameters
 
-The following command creates container registry **myRegistry** in the resource group **myResourceGroup** in the South Central US location:
+The following command uses the minimal parameters to create container registry **myRegistry** in the resource group **myResourceGroup** in the South Central US location:
 
 ```
 az acr create -n myRegistry -g myResourceGroup -l southcentralus
@@ -61,89 +59,57 @@ az acr create -n myRegistry -g myResourceGroup -l southcentralus
 
 * `--storage-account-name` or `-s` is optional. If not specified, a storage account is created with a random name in the specified resource group.
 
-When you create a registry with minimal parameters, by default it is not set up for access. To allow access to the registry, you can assign a service principal. See [Assign a service principal to an existing registry](#assign-a-service-principal-to-an-existing-registry).
-
-### Create a container registry with a new service principal
-
-The following command creates container registry **myRegistry** and a new service principal in the resource group **myResourceGroup** in the South Central US location:
-
+The command returns output similar to the following. 
 
 ```
-az acr create -n myRegistry -g myResourceGroup -l southcentralus --new-sp -p myPassword -r Owner
+{
+  "adminUserEnabled": false,
+  "creationDate": "2016-11-02T19:02:53.112519+00:00",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry",
+  "location": "southcentralus",
+  "loginServer": "myregistry-exp.azurecr.io",
+  "name": "myregistry",
+  "storageAccount": {
+    "accessKey": null,
+    "name": "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
 ```
+Take special note:
 
-* `--password` or `-p` is optional. A random password is generated if not specified.
+* **id** - Identifier for the registry in your subscription, which you need if you want to assign a service principal. 
 
-* `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
+* **loginServer** - The fully qualified name you specify to [login to the registry](./container-registry-authentication.md). In this example, the name is **myregistry-exp.azurecr.io** (all lowercase; the **-exp** in the prefix is required for private preview).
 
-The service principal Id is returned in the command output.
-
-
-### Create a container registry with an existing service principal
-
-If you already created an Azure Active Directory service principal, you can specify its Id using a command similar to the following:
-
-```
-az acr create -n myRegistry -g myResourceGroup -l southcentralus --app-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -r Owner
-```
-
-* `--app-id` is the Id for an existing service principal.
-
-* `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
+## Assign a service principal 
+When you create a registry with the CLI, by default it is not set up for access. To allow access to the registry, it is recommended to assign an Azure Active Directory service principal. For more information about registry access, see [Authenticate with the container registry](container-registry-authenticate.md). 
 
 
-## Assign a service principal to an existing registry
+### Create a service principal and assign access to the registry
 
-The following examples show different ways to run the **az acr update** command to assign a service principal to an existing container registry.
-
-### Assign a new service principal to a registry
-
-The following example creates a new service principal for the existing registry **myRegistry**.
- 
-```
-az acr update -n myRegistry --new-sp -p myPassword -r Owner
-```
-
-* `--password` or `-p` is optional. A random password is generated if not specified.
-
-* `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
-
-The service principal Id is returned in the command output.
-
-### Assign an existing service principal to a registry
+In the following command, a new service principal is assigned Owner role access to the registry identifier passed with the `--scopes` parameter. Specify a strong password with the `--password` parameter.
 
 ```
-az acr update -n myRegistry --app-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -r Owner
+az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry --role Owner --password myPassword
 ```
 
-* `--app-id` is the Id for an existing service principal.
-
-* `--role` or `-r` grants the service principal access to the registry with the specified role name (in this example, Owner).
 
 
-## Create a service principal
-
-If you would like to create a new service principal using the Azure Active Directory command module, you need to create an application first (if you don't have one). 
+### Assign an existing service principal
+If you already have a service principal and want to assign it Owner role access to the registry, run a command similar to the following. You pass the service principal tenant ID using the `--assignee` parameter:
 
 ```
-az ad app create --display-name sp-test --homepage http://myRegistry.azurecr.io --identifier-uris http://myRegistry.azurecr.io --password myPassword
+az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry --role Owner --assignee myTenantId
 ```
 
-* `--password` is optional, and you can always regenerate a new password.
-
-* `--homepage` and `--identifier-uris` can be anything, but they at least should be an URI. Use the login URL, myRegistry.azurecr.io, as a default.
-
-Save the `appId` from the output. It's an Id of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx*. You use it to create a service principal. Then, run the following command to create an service pricipal from the created application, passing the Id:
-
-```
-az ad sp create --id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
 
 
 ## Manage admin credentials
-To support registry creation from the Azure portal, an admin account is created for each container registry. The admin account is intended only as a stopgap, allowing Azure portal users a quick way to login to their newly created registry. For Container Registry preview, use of a service principal is recommended. For more information, see [Authenticate with a container registry](./container-registry-authentication.md).
+An admin account is automatically created for each container registry and is disabled by default. The admin account is intended only as a stopgap, mainly for Azure portal users to have a quick way to login to a newly created registry. For Container Registry preview, use of a service principal is recommended. 
  
-The following examples show **az acr** CLI commands  to manage the admin credentials for your container registry.
+The following examples show **az acr** CLI commands to manage the admin credentials for your container registry.
 
 ### Obtain admin user credentials
 
