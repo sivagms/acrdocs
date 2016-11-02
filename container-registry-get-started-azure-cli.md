@@ -89,6 +89,7 @@ When you create a registry with the CLI, by default it is not set up for access.
 
 ### Create a service principal and assign access to the registry
 
+
 In the following command, a new service principal is assigned Owner role access to the registry identifier passed with the `--scopes` parameter. Specify a strong password with the `--password` parameter.
 
 ```
@@ -98,10 +99,10 @@ az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 ### Assign an existing service principal
-If you already have a service principal and want to assign it Owner role access to the registry, run a command similar to the following. You pass the service principal tenant ID using the `--assignee` parameter:
+If you already have a service principal and want to assign it Owner role access to the registry, run a command similar to the following. You pass the service principal app ID using the `--assignee` parameter:
 
 ```
-az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry --role Owner --assignee myTenantId
+az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry --role Owner --assignee myAppId
 ```
 
 
@@ -111,16 +112,15 @@ An admin account is automatically created for each container registry and is dis
  
 The following examples show **az acr** CLI commands to manage the admin credentials for your container registry.
 
-### Obtain admin user credentials
-
-```
-az acr credential show -n myRegistry
-```
-
 ### Enable admin user for an existing registry
 
 ```
 az acr update -n myRegistry --enable-admin
+```
+### Obtain admin user credentials
+
+```
+az acr credential show -n myRegistry
 ```
 
 ### Disable admin user for an existing registry
