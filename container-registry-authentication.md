@@ -46,7 +46,7 @@ A straightforward way to configure a container registry with a service principal
 
 For registry operations, the service principal should be assigned in the Owner role. 
 
-
+>[AZURE.TIP] If you want, you can regenerate the password of the service principal by running the **az ad sp reset-credentials** command.
 
 
 
@@ -65,15 +65,15 @@ Using the [**az acr** commands](./container-registry-get-started-azure-cli.md#ma
 
 
 
-You can authenticate with your container registry using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command and your registry credentials. The following example shows how to pass the service principal credentials (tenant Id and password), which is recommended:
+You can authenticate with your container registry using the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command and your registry credentials. The following example shows how to pass the service principal credentials (app Id and password), which is recommended:
 
 ```
 docker login myregistry-exp.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
-Once logged in, Docker caches the credentials, so you don't need to remember the tenant Id.
+Once logged in, Docker caches the credentials, so you don't need to remember the Id.
 
->[AZURE.TIP] If you want, you can regenerate the password of the service principal by running the **az ad sp reset-credentials** command.
+
 
 
 
