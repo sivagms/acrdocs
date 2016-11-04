@@ -22,22 +22,7 @@
 
 Here are one-time steps to get access to the Container Registry private preview from you your Azure subscription.
 
-## Step 1: Register your subscription with the resource provider
-
-Using [Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/):
-
-```
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
-```
-
-Using the [Azure CLI 2.0 Preview](https://github.com/azure/azure-cli):
-
-```
-$ az resource provider register -n "Microsoft.ContainerRegistry"
-
-```
-
-## Step 2: Register with the Container Registry feature
+## Step 1: Register with the Container Registry feature
 
 Using Azure PowerShell:
 
@@ -76,6 +61,20 @@ You'll see output similar to:
 Once you see that the state of your request is Pending, please send an email to `SteveLas@Microsoft.com` to approve the feature registration request. After your request if approved, you are ready to use the Container Registry private preview!
 
  
+## Step 2: Register your subscription with the resource provider
+
+Using [Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/):
+
+```
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
+```
+
+Using the [Azure CLI 2.0 Preview](https://github.com/azure/azure-cli):
+
+```
+$ az resource provider register -n "Microsoft.ContainerRegistry"
+
+```
 
 
 ## Next steps
