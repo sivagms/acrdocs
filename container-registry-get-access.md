@@ -72,7 +72,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 Using the [Azure CLI 2.0 Preview](https://github.com/azure/azure-cli):
 
 ```
-$ az resource provider register -n "Microsoft.ContainerRegistry"
+$ az provider register -n "Microsoft.ContainerRegistry"
 
 ```
 
