@@ -20,48 +20,9 @@
 
 # Access to the Container Registry private preview
 
-Here are one-time steps to get access to the Container Registry private preview from you your Azure subscription.
-
-## Step 1: Register with the Container Registry feature
-
-Using Azure PowerShell:
-
-```
-Register-AzureRmProviderFeature -FeatureName "PrivatePreview" -ProviderNamespace "Microsoft.ContainerRegistry"
-
-```
-
-Using the Azure CLI 2.0 Preview:
-
-```
-az resource feature register --namespace Microsoft.ContainerRegistry -n PrivatePreview
-
-```
-
-If you run this CLI command:
-
-```
-az resource feature show --name PrivatePreview --namespace Microsoft.ContainerRegistry
-```
-
-You'll see output similar to:
-```
-{
-  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxxxxx/providers/Microsoft.Features/providers/Microsoft.ContainerRegistry/features/PrivatePreview",
-  "name": "Microsoft.ContainerRegistry/PrivatePreview",
-  "properties": {
-    "state": "Pending"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-```
-
-**Important**
-
-Once you see that the state of your request is Pending, please send an email to `SteveLas@Microsoft.com` to approve the feature registration request. After your request if approved, you are ready to use the Container Registry private preview!
-
+Here is a one-time step to get access to the Container Registry private preview from you your Azure subscription. If you use Ibiza, then your subscription is automatically registered.
  
-## Step 2: Register your subscription with the resource provider
+## Register your subscription with the resource provider
 
 Using [Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/):
 
